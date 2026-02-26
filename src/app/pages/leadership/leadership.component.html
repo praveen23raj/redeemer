@@ -1,0 +1,62 @@
+<section class="leadership-section">
+
+  <div class="section-header">
+    <h1>Leadership Team</h1>
+    <div class="divider"></div>
+    <p>Meet the people serving and leading Redeemer Evangelical Prayer House</p>
+  </div>
+
+  <div class="leader-grid">
+
+    <div class="leader-card"
+         *ngFor="let leader of leaders; let i = index"
+         [style.animation-delay]="(i * 0.2) + 's'">
+
+      <div class="image-wrapper">
+        <img [src]="leader.image" alt="{{leader.name}}">
+      </div>
+
+      <h3>{{leader.name}}</h3>
+      <h4>{{leader.title}}</h4>
+      <p>{{leader.shortDescription}}</p>
+
+      <button class="view-btn"
+              (click)="openProfile(leader); $event.stopPropagation()">
+        View Profile
+      </button>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- MODAL -->
+<div class="profile-modal" *ngIf="selectedLeader">
+
+  <div class="modal-backdrop"
+       (click)="closeProfile()"></div>
+
+  <div class="modal-content">
+
+    <span class="close-btn"
+          (click)="closeProfile()">×</span>
+
+    <img [src]="selectedLeader.image"
+         alt="{{selectedLeader.name}}">
+
+    <h2>{{selectedLeader.name}}</h2>
+    <h4>{{selectedLeader.title}}</h4>
+
+    <div class="gold-divider"></div>
+
+    <p>
+      {{selectedLeader.shortDescription}}
+      <br><br>
+      Dedicated to serving the church and strengthening the spiritual
+      foundation of Redeemer Evangelical Prayer House.
+    </p>
+
+  </div>
+
+</div>

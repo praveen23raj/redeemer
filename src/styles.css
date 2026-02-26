@@ -1,0 +1,13 @@
+/* GLOBAL RESET */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden; /* This prevents any weird horizontal scrolling */
+  background-color: #000; /* Sets a dark base color behind everything */
+}
+
+* {
+  box-sizing: border-box;
+}/* You can add global styles to this file, and also import other style files */
