@@ -1,0 +1,94 @@
+<footer class="footer">
+  <!-- Invitation -->
+  <section class="invite">
+    <div class="invite__rays" aria-hidden="true"></div>
+    <div class="container invite__inner" appReveal>
+      <span class="eyebrow">You are always welcome</span>
+      <h2>Join us this <em>Sunday</em></h2>
+      <p class="invite__meta">9:30 AM – 12:30 PM · Gunjurpalya, Bengaluru</p>
+      <app-countdown></app-countdown>
+      <div class="invite__actions">
+        <a class="btn btn--gold" href="https://maps.app.goo.gl/j6x47LK8eJK5kTzE6" target="_blank" rel="noopener">
+          <app-icon name="pin"></app-icon> Get Directions
+        </a>
+        <a class="btn btn--ghost" href="tel:+919845443008"><app-icon name="phone"></app-icon> Call Us</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="container cols">
+    <!-- BRAND -->
+    <div class="col col--brand">
+      <h3>Redeemer Evangelical<br>Prayer House</h3>
+      <p class="kannada">ರಿಡೀಮರ್ ಇವಾಂಜೆಲಿಕಲ್ ಪ್ರೇಯರ್ ಹೌಸ್</p>
+      <p class="tagline">"I know that my Redeemer lives"</p>
+      <div class="socials">
+        <a *ngFor="let s of socials" [href]="s.href" [attr.aria-label]="s.label" [title]="s.label">
+          <ng-container [ngSwitch]="s.svg">
+            <svg *ngSwitchCase="'fb'" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            <svg *ngSwitchCase="'x'" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            <svg *ngSwitchCase="'ig'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"/></svg>
+            <svg *ngSwitchCase="'yt'" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58zM9.75 15.02V8.98L15.5 12z"/></svg>
+          </ng-container>
+        </a>
+      </div>
+    </div>
+
+    <!-- EXPLORE -->
+    <div class="col">
+      <h4>Explore</h4>
+      <ul class="links">
+        <li><a routerLink="/">Home</a></li>
+        <li><a routerLink="/about">About Us</a></li>
+        <li><a routerLink="/ministries">Ministries</a></li>
+        <li><a routerLink="/leadership">Leadership</a></li>
+        <li><a routerLink="/contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="col">
+      <h4>Contact Us</h4>
+      <ul class="contact">
+        <li><app-icon name="pin"></app-icon><span>No. 61, Ex-Servicemen Housing Colony,<br>Gunjurpalya, Bengaluru – 560087</span></li>
+        <li><app-icon name="phone"></app-icon><a href="tel:+919845443008">+91 98454 43008</a></li>
+        <li><app-icon name="mail"></app-icon><a href="mailto:reph.pastor@gmail.com">reph.pastor&#64;gmail.com</a></li>
+        <li><app-icon name="clock"></app-icon><span>Sunday Worship: 9:30 AM – 12:30 PM</span></li>
+      </ul>
+    </div>
+
+    <!-- LEADERSHIP -->
+    <div class="col">
+      <h4>Our Leadership</h4>
+      <div class="senior">
+        <span class="badge">Senior Pastor</span>
+        <p class="name">Pastor K. Gilbert Raj</p>
+        <a href="tel:+919845443008" class="phone">98454 43008</a>
+      </div>
+      <ul class="leaders">
+        <li *ngFor="let l of leaders">
+          <span class="role">{{ l.role }}</span>
+          <span class="name">{{ l.name }}</span>
+          <a [href]="'tel:' + l.tel">{{ l.phone }}</a>
+        </li>
+      </ul>
+      <p class="founder">
+        ✝ In loving memory of <strong>(Late) Rev. P. Karunakaran</strong><br>
+        <em>Founder &amp; Sr. Pastor</em>
+      </p>
+    </div>
+  </div>
+
+  <div class="giant" aria-hidden="true">Redeemer</div>
+
+  <div class="container bottom">
+    <p>© {{ year }} Redeemer Evangelical Prayer House, Bengaluru. All Rights Reserved.</p>
+    <div class="bottom-links">
+      <a href="#">Privacy Policy</a>
+      <span aria-hidden="true">·</span>
+      <a href="#">Terms of Service</a>
+      <span aria-hidden="true">·</span>
+      <a routerLink="/contact">Contact</a>
+    </div>
+  </div>
+</footer>

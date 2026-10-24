@@ -1,8 +1,9 @@
 import { ApplicationConfig } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withInMemoryScrolling } from '@angular/router';
 
 import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes)]
+  // scrollPositionRestoration: every page opens at the top (back/forward restores position)
+  providers: [provideRouter(routes, withInMemoryScrolling({ scrollPositionRestoration: 'enabled' }))]
 };

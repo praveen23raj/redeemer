@@ -70,6 +70,6 @@ export class LeadershipComponent {
 
   closeProfile() {
     this.selectedLeader = null;
-    document.body.style.overflow = 'auto';
+    document.body.style.overflow = '';
   }
 }

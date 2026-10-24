@@ -1,41 +1,53 @@
-<nav class="navbar">
-  <div class="logo">
-    ✝ Redeemer Evangelical Prayer House
-  </div>
+<nav class="navbar" [class.scrolled]="scrolled" [class.open]="menuOpen">
+  <a class="logo" routerLink="/" aria-label="Redeemer Evangelical Prayer House — Home">
+    <span class="logo-cross">✝</span>
+    <span class="logo-text">
+      <span class="logo-name">Redeemer</span>
+      <span class="logo-sub">Evangelical Prayer House</span>
+    </span>
+  </a>
 
   <ul class="nav-links">
-    <li>
-      <a 
-        routerLink="/" 
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }">
-        Home
-      </a>
+    <li *ngFor="let l of links">
+      <a [routerLink]="l.path" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: l.exact }">{{ l.label }}</a>
     </li>
+  </ul>
 
-    <li>
-      <a routerLink="/about" routerLinkActive="active" >
-        About
-      </a>
-    </li>
+  <a class="nav-cta" routerLink="/contact">Plan a Visit</a>
 
-    <li>
-      <a routerLink="/ministries" routerLinkActive="active">
-        Ministries
-      </a>
-    </li>
+  <button class="burger" type="button" (click)="toggleMenu()"
+          [attr.aria-expanded]="menuOpen" aria-controls="mobile-menu"
+          [attr.aria-label]="menuOpen ? 'Close menu' : 'Open menu'">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
 
-    <!-- <li>
-      <a routerLink="/sermons" routerLinkActive="active">
-        Sermons
-      </a>
-    </li> -->
-<li><a routerLink="/leadership" routerLinkActive="active">Leadership</a></li>
+<!-- Mobile menu -->
+<div class="backdrop" [class.show]="menuOpen" (click)="closeMenu()"></div>
+<aside id="mobile-menu" class="drawer" [class.show]="menuOpen" [attr.aria-hidden]="!menuOpen">
+  <div class="drawer-head">
+    <span class="logo-cross">✝</span>
+    <span class="drawer-title">Menu</span>
+    <button class="drawer-close" type="button" (click)="closeMenu()" aria-label="Close menu"
+            [attr.tabindex]="menuOpen ? 0 : -1">✕</button>
+  </div>
 
-    <li>
-      <a routerLink="/contact" routerLinkActive="active">
-        Contact
+  <ul class="drawer-links">
+    <li *ngFor="let l of links; let i = index" [style.transition-delay]="menuOpen ? (0.08 + i * 0.05) + 's' : '0s'">
+      <a [routerLink]="l.path" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: l.exact }"
+         [attr.tabindex]="menuOpen ? 0 : -1">
+        <span>{{ l.label }}</span><span class="arrow">→</span>
       </a>
     </li>
   </ul>
-</nav>
+
+  <div class="drawer-foot">
+    <p class="drawer-time"><span class="dot"></span> Sunday Worship · 9:30 AM – 12:30 PM</p>
+    <a class="drawer-btn gold" routerLink="/contact" [attr.tabindex]="menuOpen ? 0 : -1">Plan a Visit</a>
+    <div class="drawer-row">
+      <a class="drawer-btn" href="tel:+919845443008" [attr.tabindex]="menuOpen ? 0 : -1">📞 Call</a>
+      <a class="drawer-btn" href="https://maps.app.goo.gl/j6x47LK8eJK5kTzE6" target="_blank" rel="noopener"
+         [attr.tabindex]="menuOpen ? 0 : -1">📍 Directions</a>
+    </div>
+  </div>
+</aside>

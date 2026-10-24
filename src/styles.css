@@ -1,13 +1,30 @@
 /* GLOBAL RESET */
-html, body {
+/*
+  FIX (mobile): previously both <html> and <body> had height:100% + overflow-x:hidden.
+  That turned <body> into its own scroll box instead of the page, which broke scrolling on
+  phones (stuck/janky scrolling, scroll events never firing, address bar not collapsing).
+  Now only <body> clips horizontal overflow, so the normal page/window scroll is used.
+*/
+html {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 100%;
-  overflow-x: hidden; /* This prevents any weird horizontal scrolling */
-  background-color: #000; /* Sets a dark base color behind everything */
+  min-height: 100%;
+  overflow-x: hidden;          /* prevents sideways scrolling */
+  background-color: #000;      /* dark base colour behind everything */
 }
 
 * {
   box-sizing: border-box;
-}/* You can add global styles to this file, and also import other style files */
+}
+
+img {
+  max-width: 100%;
+}
